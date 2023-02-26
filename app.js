@@ -2,19 +2,6 @@ const express = require('express');
 const { v4: uuidv4 } = require('uuid');
 const { format } = require('date-fns');
 
-const app = express();
-
-app.get('/', (req, res) => {
-  res.send('app )))');
-});
-
-// CRUD
-app.get('/posts', (req, res) => {});
-app.get('/posts/1', (req, res) => {});
-app.post('/posts', (req, res) => {});
-app.patch('/posts/1', (req, res) => {});
-app.delete('/posts/1', (req, res) => {});
-//----------------------------------------------------------
 const contactsDB = [
   {
     id: 0,
@@ -70,19 +57,29 @@ class ContactsDB {
       : this.contacts.splice(foundContactIndex, 1);
   }
 }
-
 const contactsDbInstace = new ContactsDB(contactsDB);
 
-const createdContact = contactsDbInstace.createContact({
-  name: 'Test',
-  telNumber: '+380123456789',
-  birthday: '2000-12-01',
+const app = express();
+
+app.use(express.json());
+
+app.get('/', (req, res) => {
+  res.send('app )))');
 });
 
-const contacts = contactsDbInstace.getContacts();
+// CRUD
+app.get('/contacts', (req, res) => {
+  const contacts = contactsDbInstace.getContacts();
+  res.status(200).send(contacts);
+});
 
-console.log('createdContact :>> ', createdContact);
+app.post('/contacts', (req, res) => {
+  const createdContact = contactsDbInstace.createContact(req.body);
+  res.status(201).send(createdContact);
+});
 
-console.log('contacts :>> ', contacts);
+app.get('/contacts/1', (req, res) => {});
+app.patch('/contacts/1', (req, res) => {});
+app.delete('/contacts/1', (req, res) => {});
 
 module.exports = app;
