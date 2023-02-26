@@ -1,0 +1,19 @@
+{
+  "name": "first-express-app",
+  "version": "1.0.0",
+  "description": "",
+  "private": "true",
+  "scripts": {
+    "start": "node ./server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pecourses/pe2022-1-first-express-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pecourses/pe2022-1-first-express-app/issues"
+  },
+  "homepage": "https://github.com/pecourses/pe2022-1-first-express-app#readme"
+}
