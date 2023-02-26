@@ -4,7 +4,8 @@
   "description": "",
   "private": "true",
   "scripts": {
-    "start": "node ./server.js"
+    "start": "node ./server.js",
+    "dev": "nodemon ./server.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/pecourses/pe2022-1-first-express-app/issues"
   },
-  "homepage": "https://github.com/pecourses/pe2022-1-first-express-app#readme"
+  "homepage": "https://github.com/pecourses/pe2022-1-first-express-app#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
 }
