@@ -1,5 +1,6 @@
+const { contactsController } = require('./controllers');
+
 const express = require('express');
-const { ContactDB } = require('./models');
 
 const app = express();
 
@@ -9,16 +10,11 @@ app.get('/', (req, res) => {
   res.send('app )))');
 });
 
-app.get('/contacts/', (req, res) => {
-  const contacts = ContactDB.getContacts();
-  res.status(200).send(contacts);
-});
+app.get('/contacts/', contactsController.getContacts);
 
-app.post('/contacts', (req, res) => {
-  const createdContact = ContactDB.createContact(req.body);
-  res.status(201).send(createdContact);
-});
+app.post('/contacts', contactsController.createContact);
 
+////////////////////////////////////////////////////////
 // params, req
 // GET localhost:5000/contacts/10?results=10&page=5
 // :id - параметр маршрута
