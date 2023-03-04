@@ -38,7 +38,7 @@ class ContactsDB {
   }
 
   updateContact (id, values) {
-    const foundContactIndex = this.contacts.findIndex(c => c.id === Number(id));
+    const foundContactIndex = this.contacts.findIndex(c => c.id === id);
     if (foundContactIndex !== -1) {
       this.contacts[foundContactIndex] = {
         ...this.contacts[foundContactIndex],
@@ -50,7 +50,7 @@ class ContactsDB {
   }
 
   deleteContact (id) {
-    const foundContactIndex = this.contacts.findIndex(c => c.id === Number(id));
+    const foundContactIndex = this.contacts.findIndex(c => c.id === id);
 
     return foundContactIndex === -1
       ? null

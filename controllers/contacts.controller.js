@@ -25,3 +25,21 @@ module.exports.getContactById = (req, res) => {
     res.status(404).send('Contact Not Found');
   }
 };
+
+module.exports.updateContactById = (req, res) => {
+  const {
+    params: { id },
+    body,
+  } = req;
+
+  // спробувати оновити контакт
+  const updatedContact = ContactDB.updateContact(id, body);
+
+  if (updatedContact) {
+    // якщо оновився, то відправити 200 + оновлений контакт
+    res.status(200).send(updatedContact);
+  } else {
+    // інакше 404 Contact Not Found
+    res.status(404).send('Contact Not Found');
+  }
+};
