@@ -1,4 +1,5 @@
 const express = require('express');
+const { ContactDB } = require('./models');
 
 const app = express();
 
@@ -9,12 +10,12 @@ app.get('/', (req, res) => {
 });
 
 app.get('/contacts/', (req, res) => {
-  const contacts = contactsDbInstace.getContacts();
+  const contacts = ContactDB.getContacts();
   res.status(200).send(contacts);
 });
 
 app.post('/contacts', (req, res) => {
-  const createdContact = contactsDbInstace.createContact(req.body);
+  const createdContact = ContactDB.createContact(req.body);
   res.status(201).send(createdContact);
 });
 
