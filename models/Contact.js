@@ -3,14 +3,14 @@ const { format } = require('date-fns');
 
 const contactsDB = [
   {
-    id: 0,
+    id: '0',
     name: 'Test',
     telNumber: '+380123456789',
     birthday: '2000-12-01',
     isFavourite: false,
   },
   {
-    id: 1,
+    id: '1',
     name: 'Test1',
     telNumber: '+380123456788',
     birthday: format(new Date(), 'Y-MM-dd'),
@@ -23,15 +23,38 @@ class ContactsDB {
     this.contacts = [...arr];
   }
 
-  // Метод для додавання нового об'єкта в масив: додає id і isFavourite
   createContact (newContact) {
     this.contacts.push({ ...newContact, id: uuidv4(), isFavourite: false });
     return this.contacts[this.contacts.length - 1];
   }
 
-  // Метод для отримання даних з масиву
   getContacts () {
     return [...this.contacts];
+  }
+
+  getContactById (id) {
+    const foundIndex = this.contacts.findIndex(c => c.id === id);
+    return foundIndex === -1 ? null : this.contacts[foundIndex];
+  }
+
+  updateContact (id, values) {
+    const foundContactIndex = this.contacts.findIndex(c => c.id === Number(id));
+    if (foundContactIndex !== -1) {
+      this.contacts[foundContactIndex] = {
+        ...this.contacts[foundContactIndex],
+        ...values,
+      };
+    }
+
+    return foundContactIndex === -1 ? null : this.contacts[foundContactIndex];
+  }
+
+  deleteContact (id) {
+    const foundContactIndex = this.contacts.findIndex(c => c.id === Number(id));
+
+    return foundContactIndex === -1
+      ? null
+      : this.contacts.splice(foundContactIndex, 1);
   }
 }
 

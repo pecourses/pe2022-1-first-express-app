@@ -10,9 +10,14 @@ app.get('/', (req, res) => {
   res.send('app )))');
 });
 
+// GET /constacts
 app.get('/contacts/', contactsController.getContacts);
 
+// POST /contacts
 app.post('/contacts', contactsController.createContact);
+
+// GET /contacts/5
+app.get('/contacts/:id', contactsController.getContactById);
 
 ////////////////////////////////////////////////////////
 // params, req
