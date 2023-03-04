@@ -6,13 +6,17 @@ module.exports.getContacts = (req, res) => {
 };
 
 module.exports.createContact = (req, res) => {
-  const createdContact = ContactDB.createContact(req.body);
+  const { body } = req;
+
+  const createdContact = ContactDB.createContact(body);
   res.status(201).send(createdContact);
 };
 
 module.exports.getContactById = (req, res) => {
+  const { id } = req.params;
+
   // перевірити, чи є контакт з заданим id
-  const foundContact = ContactDB.getContactById(req.params.id);
+  const foundContact = ContactDB.getContactById(id);
   if (foundContact) {
     // якщо є, то 200 і відправити
     res.status(200).send(foundContact);
