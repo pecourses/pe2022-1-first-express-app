@@ -23,5 +23,7 @@ app.get('/contacts/:id', contactsController.getContactById);
 app.patch('/contacts/:id', contactsController.updateContactById);
 
 // реалізувати endpoint для видалення конкретного контакту
+// DELETE /contacts/5
+app.delete('/contacts/:id', contactsController.deleteContactById);
 
 module.exports = app;
