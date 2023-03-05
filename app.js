@@ -19,7 +19,7 @@ app.get(
   }
 );
 
-// GET /constacts
+// GET /constacts?page=1&results=5
 app.get('/contacts/', contactsController.getContacts);
 
 // POST /contacts (body)

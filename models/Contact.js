@@ -16,6 +16,69 @@ const contactsDB = [
     birthday: format(new Date(), 'Y-MM-dd'),
     isFavourite: true,
   },
+  {
+    id: '2',
+    name: 'Test1',
+    telNumber: '+380123456788',
+    birthday: format(new Date(), 'Y-MM-dd'),
+    isFavourite: true,
+  },
+  {
+    id: '3',
+    name: 'Test1',
+    telNumber: '+380123456788',
+    birthday: format(new Date(), 'Y-MM-dd'),
+    isFavourite: true,
+  },
+  {
+    id: '4',
+    name: 'Test1',
+    telNumber: '+380123456788',
+    birthday: format(new Date(), 'Y-MM-dd'),
+    isFavourite: true,
+  },
+  {
+    id: '5',
+    name: 'Test1',
+    telNumber: '+380123456788',
+    birthday: format(new Date(), 'Y-MM-dd'),
+    isFavourite: true,
+  },
+  {
+    id: '6',
+    name: 'Test1',
+    telNumber: '+380123456788',
+    birthday: format(new Date(), 'Y-MM-dd'),
+    isFavourite: true,
+  },
+  {
+    id: '7',
+    name: 'Test1',
+    telNumber: '+380123456788',
+    birthday: format(new Date(), 'Y-MM-dd'),
+    isFavourite: true,
+  },
+  {
+    id: '8',
+    name: 'Test1',
+    telNumber: '+380123456788',
+    birthday: format(new Date(), 'Y-MM-dd'),
+    isFavourite: true,
+  },
+  {
+    id: '9',
+    name: 'Test1',
+    telNumber: '+380123456788',
+    birthday: format(new Date(), 'Y-MM-dd'),
+    isFavourite: true,
+  },
+  {
+    id: '10',
+    name: 'Test1',
+    telNumber: '+380123456788',
+    birthday: format(new Date(), 'Y-MM-dd'),
+    isFavourite: true,
+  },
 ];
 
 class ContactsDB {
@@ -28,8 +91,8 @@ class ContactsDB {
     return this.contacts[this.contacts.length - 1];
   }
 
-  getContacts () {
-    return [...this.contacts];
+  getContacts (page, results) {
+    return [...this.contacts.slice((page - 1) * results, page * results)];
   }
 
   getContactById (id) {
